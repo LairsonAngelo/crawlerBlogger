@@ -6,10 +6,9 @@
             foreach($html->find('.fontBODYTITULOS',0) as $element){
               if(@$element->plaintext != ''){
                 $objeto['Corpo'][] =  substr(@$element->plaintext,0,strlen(@$element->plaintext) - 242);
-            //    $pattern = '\d{2}\/\d{2}\/\d{4} - \d{2}:\d{2}:\d{2}';
                 $strings  =  substr(@$element->plaintext,strlen(@$element->plaintext) - 264,strlen(@$element->plaintext));
                 $objeto['Data'][] = substr($strings,0,strlen($strings) - 254);
-                $strings   =  substr(@$element->plaintext,strlen(@$element->plaintext) - 250,strlen(@$element->plaintext));
+                $strings = substr(@$element->plaintext,strlen(@$element->plaintext) - 250,strlen(@$element->plaintext));
                 $objeto['Hora'][] = substr($strings,0,strlen($strings) - 242);
                 }
 
@@ -24,15 +23,14 @@
                 }else{
                     $objeto['Imagem'][] = $imgurl = @$element->src;
                 }
-                  echo substr(@$element->src,0,6);
-                //  echo $imgurl."\n\n\n";
+
                   $imagename= basename($imgurl);
                   $image = Noticia::pegarIMG($imgurl);
                   file_put_contents('./imagens/'.$imagename,$image);
             }
 
                   gravar("<titulo>".$objeto['Titulo'][0]."</titulo>\n");
-                  gravar("<imagem>".$objeto['Imagem'][0]."</imagem>\n");
+                  gravar("<imagem>".@$objeto['Imagem'][0]."</imagem>\n");
                   gravar("<data>".$objeto['Data'][0]."</data>\n");
                   gravar("<hora>".$objeto['Hora'][0]."</hora>\n");
                   gravar("<corpo>".$objeto['Corpo'][0]."</corpo>\n");
@@ -53,6 +51,7 @@
             echo "Fim!!!!";
           }else{
             $pagina = $pagina + 1;
+            echo "\n\n------Estamos na pagina ".$pagina."--------";
             Noticia::Run($pagina);
           }
       }
