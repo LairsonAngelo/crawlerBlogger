@@ -1,5 +1,5 @@
 # crawlerBlogger
-Na pasta raiz do projeto rode
+Na pasta raiz do projeto rode<br>
 #mkdir imagens
 
 Em seguida execute o comando no terminal usando:
