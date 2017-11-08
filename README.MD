@@ -1,6 +1,8 @@
 # crawlerBlogger
+Na pasta raiz do projeto rode
+#mkdir imagens
 
-Rode o codigo no terminal usando:
+Em seguida execute o comando no terminal usando:
 
 #php index.php
 
